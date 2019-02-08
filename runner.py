@@ -10,15 +10,11 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    if message.content == 'create-new':
-        server = message.id
-        await client.create_channel(server, 'test')
-        print("create new")
-    elif message.author != client.user:
-        await client.send_message(message.channel, message.content[::-1])
-        print(message.id)
-        if message.content == 'test':
-            print("works")
+    test = message.content
+    commandmessage = test.split(':')
+    if commandmessage[0] == 'create-new':
+        await client.create_channel(message.server, commandmessage[1])
+
 
         
     
